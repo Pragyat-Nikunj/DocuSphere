@@ -10,6 +10,8 @@ import { useEditorStore } from '@/store/use-editor-store';
 import { TextStyle, FontFamily, Color } from '@tiptap/extension-text-style';
 import Highlight from '@tiptap/extension-highlight';
 
+import { FontSizeExtension } from '@/extensions/font-size';
+
 export const Editor = () => {
     const { setEditor } = useEditorStore();
     const editor = useEditor({
@@ -51,6 +53,7 @@ export const Editor = () => {
                     defaultProtocol: "https",
                 },
             }), 
+            FontSizeExtension,
             TextAlign.configure({
                 types: ["heading", "paragraph"],
             }),
