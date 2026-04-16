@@ -4,35 +4,36 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { TaskItem, TaskList } from '@tiptap/extension-list';
 import { TableKit } from '@tiptap/extension-table';
-import ImageResize from 'tiptap-extension-resize-image';
+import Image from '@tiptap/extension-image';
 import { useEditorStore } from '@/store/use-editor-store';
 import { TextStyle, FontFamily, Color } from '@tiptap/extension-text-style';
 import Highlight from '@tiptap/extension-highlight';
+
 export const Editor = () => {
     const { setEditor } = useEditorStore();
     const editor = useEditor({
-        onCreate({editor}) {
+        onCreate({ editor }) {
             setEditor(editor);
         },
         onDestroy() {
             setEditor(null);
         },
-        onUpdate({editor}) {
+        onUpdate({ editor }) {
             setEditor(editor);
         },
-        onSelectionUpdate({editor}) {
+        onSelectionUpdate({ editor }) {
             setEditor(editor);
         },
-        onTransaction({editor}) {
+        onTransaction({ editor }) {
             setEditor(editor);
         },
-        onFocus({editor}) {
+        onFocus({ editor }) {
             setEditor(editor);
         },
-        onBlur({editor}) {
+        onBlur({ editor }) {
             setEditor(editor);
         },
-        onContentError({editor}) {
+        onContentError({ editor }) {
             setEditor(editor);
         },
         editorProps: {
@@ -42,14 +43,20 @@ export const Editor = () => {
             }
         },
         extensions: [
-            StarterKit,
+            StarterKit.configure({
+                link: {
+                    openOnClick: false,
+                    autolink: true,
+                    defaultProtocol: "https",
+                },
+            }), 
             Color,
-            Highlight.configure({ 
-                multicolor: true 
+            Highlight.configure({
+                multicolor: true
             }),
             TextStyle,
             FontFamily,
-            ImageResize,
+            Image,
             TaskItem.configure({
                 nested: true,
             }),
