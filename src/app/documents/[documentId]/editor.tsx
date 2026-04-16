@@ -5,6 +5,7 @@ import StarterKit from '@tiptap/starter-kit';
 import { TaskItem, TaskList } from '@tiptap/extension-list';
 import { TableKit } from '@tiptap/extension-table';
 import Image from '@tiptap/extension-image';
+import TextAlign from '@tiptap/extension-text-align';
 import { useEditorStore } from '@/store/use-editor-store';
 import { TextStyle, FontFamily, Color } from '@tiptap/extension-text-style';
 import Highlight from '@tiptap/extension-highlight';
@@ -50,6 +51,9 @@ export const Editor = () => {
                     defaultProtocol: "https",
                 },
             }), 
+            TextAlign.configure({
+                types: ["heading", "paragraph"],
+            }),
             Color,
             Highlight.configure({
                 multicolor: true
