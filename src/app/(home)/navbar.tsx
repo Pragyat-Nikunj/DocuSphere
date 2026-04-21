@@ -1,18 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
+import { UserButton } from "@clerk/nextjs";
 import { SearchInput } from "./search-input";
 
 export const Navbar = () => {
     return (
         <nav className="flex items-center justify-between h-full w-full">
-            <div className="flex gap-3 items-center shrink-0 pr-6 p-4">
+            <div className="flex gap-3 items-center shrink-0 pr-6">
                 <Link href="/">
                     <Image src="/logo.svg" alt="logo" width={36} height={36}  loading="eager"/>
                 </Link>
                 <h3 className="text-xl">DocuSphere</h3>
             </div>
             <SearchInput />
-            <div />
+            <div className="mr-2">
+            <UserButton />
+            </div>
         </nav>
     )
 }
