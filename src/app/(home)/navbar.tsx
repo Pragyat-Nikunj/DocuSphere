@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, OrganizationSwitcher } from "@clerk/nextjs";
 import { SearchInput } from "./search-input";
 
 export const Navbar = () => {
@@ -13,8 +13,14 @@ export const Navbar = () => {
                 <h3 className="text-xl">DocuSphere</h3>
             </div>
             <SearchInput />
-            <div className="mr-2">
-            <UserButton />
+            <div className="flex gap-3 items-center mr-2 pl-6">
+                <OrganizationSwitcher
+                 afterCreateOrganizationUrl="/"
+                 afterLeaveOrganizationUrl="/"
+                 afterSelectOrganizationUrl="/"
+                 afterSelectPersonalUrl="/"
+                 />
+                <UserButton />
             </div>
         </nav>
     )

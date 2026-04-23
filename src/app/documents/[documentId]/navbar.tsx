@@ -34,6 +34,7 @@ import {
     Undo2Icon 
 } from "lucide-react";
 import { BsFilePdf } from "react-icons/bs";
+import { UserButton, OrganizationSwitcher } from "@clerk/nextjs";
 import { useEditorStore } from "@/store/use-editor-store";
 
 export const Navbar = () => {
@@ -224,6 +225,15 @@ export const Navbar = () => {
                     </div>
                 </div>
             </div>
+            <div className="flex gap-3 items-center mr-2 pl-6">
+                <OrganizationSwitcher
+                afterCreateOrganizationUrl="/"
+                afterLeaveOrganizationUrl="/"
+                afterSelectOrganizationUrl="/"
+                afterSelectPersonalUrl="/"
+                />
+                <UserButton />
+             </div>
         </nav>
     )
 }
