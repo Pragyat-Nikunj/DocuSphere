@@ -33,9 +33,11 @@ import {
     UnderlineIcon, 
     Undo2Icon 
 } from "lucide-react";
+import { Avatars } from "./avatars";
 import { BsFilePdf } from "react-icons/bs";
 import { UserButton, OrganizationSwitcher } from "@clerk/nextjs";
 import { useEditorStore } from "@/store/use-editor-store";
+import { Inbox } from "./inbox";
 
 export const Navbar = () => {
     const { editor } = useEditorStore();
@@ -226,6 +228,8 @@ export const Navbar = () => {
                 </div>
             </div>
             <div className="flex gap-3 items-center mr-2 pl-6">
+                <Avatars />
+                <Inbox />
                 <OrganizationSwitcher
                 afterCreateOrganizationUrl="/"
                 afterLeaveOrganizationUrl="/"
