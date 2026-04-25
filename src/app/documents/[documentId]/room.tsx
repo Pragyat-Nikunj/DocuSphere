@@ -11,6 +11,7 @@ import { useParams } from "next/navigation";
 import { getUsers, getDocument } from "./actions";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { toast } from "sonner";
+import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
 
 type User = {
   id: string;
@@ -57,6 +58,7 @@ export function Room({ children }: { children: ReactNode }) {
           return {
             name: user.name,
             avatar: user.avatar,
+            color: "#000000",
           };
         });
       }}
@@ -79,7 +81,7 @@ export function Room({ children }: { children: ReactNode }) {
     >
       <RoomProvider 
        id={params.documentId as string} 
-       initialStorage={{ leftMargin: 56, rightMargin: 56}}
+       initialStorage={{ leftMargin: LEFT_MARGIN_DEFAULT, rightMargin: RIGHT_MARGIN_DEFAULT }}
       >
         <ClientSideSuspense fallback={<FullScreenLoader label="Room loading..." />}>
           {children}

@@ -29,7 +29,6 @@ export const RemoveDialog = ({
     const remove = useMutation(api.documents.removeById);
     const [isRemoving, setIsRemoving] = useState(false);
 
-
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -54,7 +53,10 @@ export const RemoveDialog = ({
                         setIsRemoving(true);
                         remove({ id: documentId })
                           .catch(() => toast.error("Something went wrong"))
-                          .then(() => toast.success("Document removed"))
+                          .then(() => {
+                            toast.success("Document removed");
+                            window.location.href = "/";
+                        })
                           .finally(() => setIsRemoving(false));
                      }}
                     >

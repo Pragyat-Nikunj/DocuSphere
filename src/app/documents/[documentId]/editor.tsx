@@ -16,11 +16,20 @@ import { FontSizeExtension } from '@/extensions/font-size';
 import { LineHeightExtension } from '@/extensions/line-height';
 import { Ruler } from './ruler';
 import { Threads } from './threads';
+import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
+import { PAGE_WIDTH } from "@/constants/page-width";
 
-export const Editor = () => {
-    const leftMargin = useStorage((root) => root.leftMargin);
-    const rightMargin = useStorage((root) => root.rightMargin);
-    const liveblocks = useLiveblocksExtension();
+interface EditorProps {
+    initialContent?: string | undefined;
+}
+
+export const Editor = ({ initialContent }: EditorProps) => {
+    const leftMargin = useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
+    const rightMargin = useStorage((root) => root.rightMargin) ?? RIGHT_MARGIN_DEFAULT;
+    const liveblocks = useLiveblocksExtension({
+        initialContent,
+        offlineSupport_experimental: true,
+    });
     const { setEditor } = useEditorStore();
     const editor = useEditor({
         onCreate({ editor }) {
@@ -49,8 +58,8 @@ export const Editor = () => {
         },
         editorProps: {
             attributes: {
-                style: `padding-left: ${leftMargin ?? 56}px; padding-right: ${rightMargin ?? 56}px;`,
-                class: "focus:outline print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor:text"
+                style: `padding-left: ${leftMargin}px; padding-right: ${rightMargin}px; width: ${PAGE_WIDTH}px;`,
+                class: `focus:outline print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] pt-10 pr-14 pb-10 cursor:text`
             }
         },
         extensions: [
@@ -89,7 +98,10 @@ export const Editor = () => {
     return (
         <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:p-0 print:bg-white print:overflow-visible">
             <Ruler />
-            <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
+            <div  
+             style={{width: `${PAGE_WIDTH}px`}} 
+             className={`min-w-max flex justify-center py-4 print:py-0 mx-auto print:w-full print:min-w-0`}
+            >
                 <EditorContent editor={editor} />
                 <Threads editor={editor} />
             </div>
