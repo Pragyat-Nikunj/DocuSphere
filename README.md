@@ -2,6 +2,19 @@
 
 A modern, collaborative document editing platform built with Next.js, Convex, and Liveblocks. Docusphere enables real-time document editing, sharing, and seamless user experience with robust authentication and a rich UI component library.
 
+
+
+## 📚 Documentation
+
+Instead of cluttering this README, full guides and architecture are available here:
+
+👉 https://mintlify.wiki/Pragyat-Nikunj/DocuSphere
+
+Includes:
+- Setup guide  
+- Architecture explanation  
+- API details  
+- Feature breakdown  
 ---
 
 ## Table of Contents
@@ -13,7 +26,6 @@ A modern, collaborative document editing platform built with Next.js, Convex, an
 - [Development](#development)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
