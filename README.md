@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Docusphere
+
+A modern, collaborative document editing platform built with Next.js, Convex, and Liveblocks. Docusphere enables real-time document editing, sharing, and seamless user experience with robust authentication and a rich UI component library.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Development](#development)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Features
+
+- Real-time collaborative document editing
+- User authentication and access control (Clerk)
+- Rich text editing with Tiptap
+- Live presence and cursors (Liveblocks)
+- Document sharing and management
+- Responsive, modern UI (shadcn/ui, Tailwind CSS)
+- Modular, scalable codebase
+
+## Tech Stack
+
+- **Frontend:** Next.js (App Router), React 19, TypeScript
+- **Backend:** Convex (serverless database & functions)
+- **Authentication:** Clerk
+- **Collaboration:** Liveblocks
+- **UI:** shadcn/ui, Tailwind CSS
+- **State Management:** Zustand
+
+## Project Structure
+
+```
+├── convex/                # Convex backend (schema, functions, API)
+├── public/                # Static assets
+├── src/
+│   ├── app/               # Next.js app directory (routing, pages)
+│   │   ├── documents/     # Document-related routes & logic
+│   │   └── ...
+│   ├── components/        # Reusable UI and logic components
+│   ├── constants/         # App-wide constants
+│   ├── extensions/        # Editor and UI extensions
+│   ├── hooks/             # Custom React hooks
+│   ├── lib/               # Utility functions
+│   └── store/             # Zustand stores
+├── package.json           # Project metadata & scripts
+├── README.md              # Project documentation
+└── ...
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+### Environment Variables (.env.local example)
+
+Create a `.env.local` file in the project root with the following example:
+
+```env
+# Convex
+CONVEX_DEPLOYMENT=dev:your-convex-deployment
+NEXT_PUBLIC_CONVEX_URL=https://your-convex-url.convex.cloud
+NEXT_PUBLIC_CONVEX_SITE_URL=https://your-convex-url.convex.site
+
+# Clerk (Authentication)
+CLERK_JWT_ISSUER_DOMAIN=https://your-clerk-domain.clerk.accounts.dev
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_clerk_publishable_key
+CLERK_SECRET_KEY=sk_test_your_clerk_secret_key
+
+# Liveblocks (Collaboration)
+NEXT_PUBLIC_LIVEBLOCKS_SECRET_KEY=sk_dev_your_liveblocks_secret_key
+```
+
+Replace the example values with your actual credentials for Convex, Clerk, and Liveblocks.
+### Installation
+
+```bash
+npm install
+```
+
+### Running Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Configure Clerk, Convex, and Liveblocks credentials in your `.env` file as needed.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development
 
-## Learn More
+- Lint: `npm run lint`
+- Build: `npm run build`
+- Start: `npm run start`
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy on Vercel or any platform supporting Next.js and serverless functions. Configure environment variables for Clerk, Convex, and Liveblocks in your deployment settings.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are welcome! Please open issues and pull requests for improvements or bug fixes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
